@@ -1,0 +1,48 @@
+
+<html>
+    <body>
+        <form id="my_form" methods="post">
+        <div class="mb-3 row">
+            <label for="time1" class="col-sm-2 col-form-label">Time 1</label>
+            <div class="col-sm-10">
+                <input type="time" id="time1" name="time1">
+            </div>
+            <label for="time2" class="col-sm-2 col-form-label">Time 2</label>
+            <div class="col-sm-10">
+                <input type="time" id="time2" name="time2">
+            </div>
+            <label for="time3" class="col-sm-2 col-form-label">Time 3</label>
+            <div class="col-sm-10">
+                <input type="time" id="time3" name="time3">
+            </div>
+            <label for="time4" class="col-sm-2 col-form-label">Time 4</label>
+            <div class="col-sm-10">
+                <input type="time" id="time4" name="time4">
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+    </form>
+
+    </body>
+<script>
+const my_form = document.getElementById('my_form');
+my_form.addEventListener('submit', send_data);
+
+function send_data(){
+    //e.preventDefault()
+    const time1=document.getElementById("time1").value
+    const time2=document.getElementById("time2").value
+    const time3=document.getElementById("time3").value
+    const time4=document.getElementById("time4").value
+    times={"time1":time1,"time2":time2,"time3":time3,"time4":time4}
+    times_json=JSON.stringify(times)
+    fetch('/', {
+    method: 'POST', // or 'PUT'
+
+    body:times_json,
+})
+
+}
+</script>
+
+</html>
